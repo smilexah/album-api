@@ -2,6 +2,13 @@
 # Compiled class file
 *.class
 
+# Compiled photo formats
+*.jpg
+*.png
+*.jpeg
+
+*.txt
+
 # Log file
 *.log
 
