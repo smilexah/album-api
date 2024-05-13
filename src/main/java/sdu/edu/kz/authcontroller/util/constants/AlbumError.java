@@ -2,6 +2,7 @@ package sdu.edu.kz.authcontroller.util.constants;
 
 public enum AlbumError {
     ALBUM_ADD_ERROR,
+    ALBUM_PHOTO_ADD_ERROR,
     ALBUM_UPDATE_ERROR,
     ALBUM_DELETE_ERROR,
     ALBUM_NOT_FOUND,

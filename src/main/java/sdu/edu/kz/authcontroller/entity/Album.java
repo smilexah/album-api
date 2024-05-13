@@ -12,8 +12,8 @@ import lombok.ToString;
 public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "album_id", nullable = false)
-    private Long albumId;
+//    @Column(name = "album_id", nullable = false)
+    private Long id;
 
     @Column(name = "album_name", length = 100)
     private String albumName;
@@ -22,6 +22,6 @@ public class Album {
     private String albumDescription;
 
     @ManyToOne
-    @JoinColumn(name = "account_id", referencedColumnName = "account_id", nullable = false)
+    @JoinColumn(name = "account_id", referencedColumnName = "id", nullable = false)
     private Account account;
 }

@@ -83,7 +83,7 @@ public class AuthController {
         List<AccountViewDTO> accounts = new ArrayList<>();
 
         for (Account account : accountService.findAll()) {
-            accounts.add(new AccountViewDTO(account.getAccountID(), account.getEmail(), account.getAuthorities()));
+            accounts.add(new AccountViewDTO(account.getId(), account.getEmail(), account.getAuthorities()));
         }
 
         return accounts;
@@ -104,7 +104,7 @@ public class AuthController {
             account.setAuthorities(authoritiesDTO.getAuthorities());
             accountService.save(account);
 
-            return ResponseEntity.ok(new AccountViewDTO(account.getAccountID(), account.getEmail(), account.getAuthorities()));
+            return ResponseEntity.ok(new AccountViewDTO(account.getId(), account.getEmail(), account.getAuthorities()));
         }
 
         return new ResponseEntity<>(new AccountViewDTO(), HttpStatus.BAD_REQUEST);
@@ -122,7 +122,7 @@ public class AuthController {
 
         Account account = optionalAccount.get();
 
-        return new ProfileDTO(account.getAccountID(), account.getEmail(), account.getAuthorities());
+        return new ProfileDTO(account.getId(), account.getEmail(), account.getAuthorities());
     }
 
     @PutMapping(value = "/profile/update-password", produces = "application/json", consumes = "application/json")
@@ -139,7 +139,7 @@ public class AuthController {
         account.setPassword(passwordDTO.getPassword());
         accountService.save(account);
 
-        return new AccountViewDTO(account.getAccountID(), account.getEmail(), account.getAuthorities());
+        return new AccountViewDTO(account.getId(), account.getEmail(), account.getAuthorities());
     }
 
     @DeleteMapping(value = "/profile/delete")
@@ -154,7 +154,7 @@ public class AuthController {
         Optional<Account> optionalAccount = accountService.findByEmail(email);
 
         if (optionalAccount.isPresent()) {
-            accountService.deleteById(optionalAccount.get().getAccountID());
+            accountService.deleteById(optionalAccount.get().getId());
 
             return ResponseEntity.ok("User deleted");
         }

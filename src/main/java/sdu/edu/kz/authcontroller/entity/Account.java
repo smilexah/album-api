@@ -16,8 +16,8 @@ import java.util.Set;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "account_id")
-    private Long accountID;
+//    @Column(name = "account_id", nullable = false)
+    private Long id;
 
     @Email
     @Column(unique = true, name = "email", nullable = false)
@@ -29,7 +29,7 @@ public class Account {
     @Column(name = "authorities", nullable = false)
     private String authorities;
 
-    @OneToMany
-    @Column(name = "album_id", nullable = false)
-    private Set<Album> albums;
+//    @OneToMany
+//    @Column(name = "album_id", nullable = false)
+//    private Set<Album> albums;
 }
